@@ -16,9 +16,14 @@ public class DatabaseAccess : MonoBehaviour
     {
         database = client.GetDatabase("civis");
         collection = database.GetCollection<BsonDocument>("proposicoes");
+
+        var propositionAwaited = collection.Find(new BsonDocument());
+        var propositionTest = propositionAwaited.ToList()[0].ToString();
+
+        Debug.Log("testing: " + propositionTest);
     }
 
-    public async Task<List<string>> GetPropositionsFromDatabase() // Teste para obter proposições do MongoDB
+    public async Task<List<string>> GetPropositionsFromDatabase() // Teste para obter proposicoes do MongoDB
     {
         var allPropositionsTask = collection.FindAsync(new BsonDocument());
         var propositionsAwaited = await allPropositionsTask;

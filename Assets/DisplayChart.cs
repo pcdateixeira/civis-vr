@@ -14,14 +14,14 @@ public class DisplayChart : MonoBehaviour
     {
         databaseAccess = GameObject.FindGameObjectWithTag("DatabaseAccess").GetComponent<DatabaseAccess>();
         proposition = GetComponentInChildren<TextMeshPro>();
-        DisplayProposition();
-        
+        Invoke("DisplayProposition", 2f);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private async void DisplayProposition()
