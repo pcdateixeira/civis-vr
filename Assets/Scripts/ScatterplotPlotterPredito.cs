@@ -37,8 +37,8 @@ public class ScatterplotPlotterPredito : MonoBehaviour
 
         // Use the "IATKUtil" class to get the corresponding Material mt 
         Material mt = IATKUtil.GetMaterialFromTopology(AbstractVisualisation.GeometryType.Spheres);
-        mt.SetFloat("_MinSize", 0.055f);
-        mt.SetFloat("_MaxSize", 0.055f);
+        mt.SetFloat("_MinSize", 0.025f);
+        mt.SetFloat("_MaxSize", 0.025f);
 
         // Create a view builder with the point topology
         View view = vb.updateView().apply(gameObject, mt);
