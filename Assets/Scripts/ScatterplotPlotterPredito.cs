@@ -73,6 +73,7 @@ public class ScatterplotPlotterPredito : MonoBehaviour
             if (ColorUtility.TryParseHtmlString(csvds.getOriginalValue(f, colorColumnIdentifier).ToString(), out newCol))
             {
                 newColorList[i++] = newCol;
+                Debug.Log(newColorList[i]);
             }
 
            /*if(f == 0){
