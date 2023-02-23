@@ -29,8 +29,8 @@ public class ScatterplotPlotterOriginal : MonoBehaviour
                              initialiseDataView(myCSVDataSource.DataCount).
                              setDataDimension(myCSVDataSource["x"].Data, ViewBuilder.VIEW_DIMENSION.X).
                              setDataDimension(myCSVDataSource["y"].Data, ViewBuilder.VIEW_DIMENSION.Y).
-                             setDataDimension(myCSVDataSource["z"].Data, ViewBuilder.VIEW_DIMENSION.Z);     
-                             //setColors(getListOfColorsFromListOfHexStrings(myCSVDataSource, "alternativeColorMap"));                    
+                             setDataDimension(myCSVDataSource["z"].Data, ViewBuilder.VIEW_DIMENSION.Z).     
+                             setColors(getListOfColorsFromListOfHexStrings(myCSVDataSource, "alternativeColorMap"));                    
                
 
         // Use the "IATKUtil" class to get the corresponding Material mt 
@@ -66,7 +66,14 @@ public class ScatterplotPlotterOriginal : MonoBehaviour
         foreach (float f in iatk_float_data)
         {
             Color newCol;
+            /*
             if (ColorUtility.TryParseHtmlString(csvds.getOriginalValue(f, colorColumnIdentifier).ToString(), out newCol))
+            {
+                newColorList[i++] = newCol;
+            }
+            */
+                
+            if (ColorUtility.TryParseHtmlString("#00FF00", out newCol))
             {
                 newColorList[i++] = newCol;
             }

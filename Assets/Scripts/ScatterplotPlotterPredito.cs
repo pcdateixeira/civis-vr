@@ -29,7 +29,9 @@ public class ScatterplotPlotterPredito : MonoBehaviour
                              initialiseDataView(myCSVDataSource.DataCount).
                              setDataDimension(myCSVDataSource["x"].Data, ViewBuilder.VIEW_DIMENSION.X).
                              setDataDimension(myCSVDataSource["y"].Data, ViewBuilder.VIEW_DIMENSION.Y).
-                             setDataDimension(myCSVDataSource["z"].Data, ViewBuilder.VIEW_DIMENSION.Z);     
+                             setDataDimension(myCSVDataSource["z"].Data, ViewBuilder.VIEW_DIMENSION.Z).
+                            setColors(getListOfColorsFromListOfHexStrings(myCSVDataSource, "alternativeColorMap"));                    
+    
                              //setColors(getListOfColorsFromListOfHexStrings(myCSVDataSource, "alternativeColorMap"));                    
                
 
@@ -59,16 +61,33 @@ public class ScatterplotPlotterPredito : MonoBehaviour
     // Improvised function to retrieve data from a column comprising color strings in hex format 
     Color[] getListOfColorsFromListOfHexStrings(CSVDataSource csvds, string colorColumnIdentifier)
     {
-        float[] iatk_float_data = csvds[colorColumnIdentifier].Data;
+        //float[] iatk_float_data = csvds[colorColumnIdentifier].Data;
+        float[] iatk_float_data = csvds["z"].Data;
         Color[] newColorList = new Color[iatk_float_data.Length];
         int i = 0;
 
         foreach (float f in iatk_float_data)
         {
             Color newCol;
+            /*
+            Color newCol;
             if (ColorUtility.TryParseHtmlString(csvds.getOriginalValue(f, colorColumnIdentifier).ToString(), out newCol))
             {
                 newColorList[i++] = newCol;
+            }*/
+
+           if(f == 0){
+                
+                if (ColorUtility.TryParseHtmlString("#0000FF", out newCol))
+                {
+                    newColorList[i++] = newCol;
+                }
+            }
+            else{
+                if (ColorUtility.TryParseHtmlString("#FF0000", out newCol))
+                {
+                    newColorList[i++] = newCol;
+                }
             }
         }
 
