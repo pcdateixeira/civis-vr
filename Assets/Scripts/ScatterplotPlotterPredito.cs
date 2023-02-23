@@ -61,22 +61,20 @@ public class ScatterplotPlotterPredito : MonoBehaviour
     // Improvised function to retrieve data from a column comprising color strings in hex format 
     Color[] getListOfColorsFromListOfHexStrings(CSVDataSource csvds, string colorColumnIdentifier)
     {
-        //float[] iatk_float_data = csvds[colorColumnIdentifier].Data;
-        float[] iatk_float_data = csvds["z"].Data;
+        float[] iatk_float_data = csvds[colorColumnIdentifier].Data;
+        //float[] iatk_float_data = csvds["z"].Data;
         Color[] newColorList = new Color[iatk_float_data.Length];
         int i = 0;
 
         foreach (float f in iatk_float_data)
-        {
-            Color newCol;
-            /*
+        {            
             Color newCol;
             if (ColorUtility.TryParseHtmlString(csvds.getOriginalValue(f, colorColumnIdentifier).ToString(), out newCol))
             {
                 newColorList[i++] = newCol;
-            }*/
+            }
 
-           if(f == 0){
+           /*if(f == 0){
                 
                 if (ColorUtility.TryParseHtmlString("#0000FF", out newCol))
                 {
@@ -88,7 +86,7 @@ public class ScatterplotPlotterPredito : MonoBehaviour
                 {
                     newColorList[i++] = newCol;
                 }
-            }
+            }*/
         }
 
         return newColorList;
