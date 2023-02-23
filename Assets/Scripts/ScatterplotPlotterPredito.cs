@@ -37,13 +37,14 @@ public class ScatterplotPlotterPredito : MonoBehaviour
 
         // Use the "IATKUtil" class to get the corresponding Material mt 
         Material mt = IATKUtil.GetMaterialFromTopology(AbstractVisualisation.GeometryType.Spheres);
-        mt.SetFloat("_MinSize", 0.025f);
-        mt.SetFloat("_MaxSize", 0.025f);
+        mt.SetFloat("_MinSize", 0.055f);
+        mt.SetFloat("_MaxSize", 0.055f);
 
         // Create a view builder with the point topology
         View view = vb.updateView().apply(gameObject, mt);
 
         view.transform.position -= new Vector3(0.5f, 0.5f, 0.5f); // compensating for the fact that natively the center of the view object is the lower left corner of the visualization and not its centroid.
+        view.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self); // Coloca o scatterplot de frente ao outro
     }
 
 
