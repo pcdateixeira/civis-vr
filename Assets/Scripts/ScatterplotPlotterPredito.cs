@@ -44,6 +44,7 @@ public class ScatterplotPlotterPredito : MonoBehaviour
         View view = vb.updateView().apply(gameObject, mt);
 
         view.transform.position -= new Vector3(0.5f, 0.5f, 0.5f); // compensating for the fact that natively the center of the view object is the lower left corner of the visualization and not its centroid.
+        view.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self); // Coloca o scatterplot de frente ao outro
     }
 
 
@@ -72,6 +73,7 @@ public class ScatterplotPlotterPredito : MonoBehaviour
             if (ColorUtility.TryParseHtmlString(csvds.getOriginalValue(f, colorColumnIdentifier).ToString(), out newCol))
             {
                 newColorList[i++] = newCol;
+                Debug.Log(newColorList[i]);
             }
 
            /*if(f == 0){
