@@ -52,6 +52,8 @@ namespace PieChart.ViitorCloud
             if (mainMaterial != null)
                 pieChartMeshController.SetMatrialOfPie(mainMaterial);
 
+            Data[0] = 10000;
+
             pieChartMeshController.SetData(Data);
             pieChartMeshController.SetColor(customColors);
             pieChartMeshController.SetDescription(dataDescription.ToArray());

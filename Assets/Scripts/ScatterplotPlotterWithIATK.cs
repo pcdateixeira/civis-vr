@@ -6,9 +6,10 @@ using UnityEngine;
 public class ScatterplotPlotterWithIATK : MonoBehaviour
 {
     // Start is called before the first frame update
+    public string path_name = "Data/proposicoes_scatter_original";
     void Start()
     {
-        LoadPoints("Data/legislature54");
+        LoadPoints(path_name);
     }
 
     // Update is called once per frame
@@ -28,8 +29,9 @@ public class ScatterplotPlotterWithIATK : MonoBehaviour
                              initialiseDataView(myCSVDataSource.DataCount).
                              setDataDimension(myCSVDataSource["x"].Data, ViewBuilder.VIEW_DIMENSION.X).
                              setDataDimension(myCSVDataSource["y"].Data, ViewBuilder.VIEW_DIMENSION.Y).
-                             setDataDimension(myCSVDataSource["z"].Data, ViewBuilder.VIEW_DIMENSION.Z).
-                             setColors(getListOfColorsFromListOfHexStrings(myCSVDataSource, "alternativeColorMap"));                    
+                             setDataDimension(myCSVDataSource["z"].Data, ViewBuilder.VIEW_DIMENSION.Z);     
+                             //setColors(getListOfColorsFromListOfHexStrings(myCSVDataSource, "alternativeColorMap"));                    
+               
 
         // Use the "IATKUtil" class to get the corresponding Material mt 
         Material mt = IATKUtil.GetMaterialFromTopology(AbstractVisualisation.GeometryType.Spheres);
