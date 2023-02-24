@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using IATK;
 using UnityEngine;
 
-public class ScatterplotPlotterOriginal : MonoBehaviour
+public class LayerScatterplotPlotter : MonoBehaviour
 {
     // Start is called before the first frame update
     public string path_name = "Data/proposicoes_scatter_original";
@@ -34,12 +34,14 @@ public class ScatterplotPlotterOriginal : MonoBehaviour
                
 
         // Use the "IATKUtil" class to get the corresponding Material mt 
-        Material mt = IATKUtil.GetMaterialFromTopology(AbstractVisualisation.GeometryType.Spheres);
-        mt.SetFloat("_MinSize", 0.025f);
-        mt.SetFloat("_MaxSize", 0.025f);
+        Material mt = IATKUtil.GetMaterialFromTopology(AbstractVisualisation.GeometryType.Lines);
+        mt.SetFloat("_MinSize", 0.25f);
+        mt.SetFloat("_MaxSize", 0.25f);
 
         // Create a view builder with the point topology
         View view = vb.updateView().apply(gameObject, mt);
+
+        //view.transform.localScale += new Vector3(0.1f, 2.0f, 0.1f); // Coloca o scatterplot de frente ao outro
 
         view.transform.position -= new Vector3(0.5f, 0.5f, 0.5f); // compensating for the fact that natively the center of the view object is the lower left corner of the visualization and not its centroid.
         view.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self); // Coloca o scatterplot de frente ao outro
@@ -72,9 +74,24 @@ public class ScatterplotPlotterOriginal : MonoBehaviour
             {
                 newColorList[i++] = newCol;
             }
+
+           /*if(f == 0){
+                
+                if (ColorUtility.TryParseHtmlString("#0000FF", out newCol))
+                {
+                    newColorList[i++] = newCol;
+                }
+            }
+            else{
+                if (ColorUtility.TryParseHtmlString("#FF0000", out newCol))
+                {
+                    newColorList[i++] = newCol;
+                }
+            }*/
         }
 
         return newColorList;
     }
+
 
 }
